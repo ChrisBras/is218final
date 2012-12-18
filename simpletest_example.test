@@ -142,5 +142,21 @@ class SimpletestUnitTestExampleTestCase extends DrupalUnitTestCase {
     $result = simpletest_example_empty_mysql_date(date('Y-m-d'));
     $message = 'A valid date should return FALSE.';
     $this->assertFalse($result, $message);
+
+    $result = simpletest_example_empty_mysql_date(date('Y-m-d'));
+    $message = 'A valid date should return FALSE.';
+    $this->assertFalse($result, $message);
+    
+    $result = simpletest_example_empty_mysql_date(date('Y-m-d'));
+    $message = 'A valid date should return FALSE.';
+    $this->assertFalse($result, $message);
+
+    $result = simpletest_example_uppercase_string("UPPERCASE");
+    $message = 'UPPERCASE should return TRUE.';
+    $this->assertFalse($result, $message);
+
+    $result = simpletest_example_uppercase_string("lowercase");
+    $message = 'lowercase should return FALSE.';
+    $this->assertFalse($result, $message);
   }
 }

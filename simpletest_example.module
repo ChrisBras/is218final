@@ -126,6 +126,21 @@ function simpletest_example_empty_mysql_date($date_string) {
   return false;
 }
 
+function simpletest_example_uppercase_string($string) {
+  if (ctype_upper($string)) {
+    return true;
+  }
+  return false;
+}
+
+
+function simpletest_example_lowercase_string($string) {
+  if (ctype_lower($string)) {
+    return true;
+  }
+  return false;
+}
+
 /**
  * @} End of "defgroup simpletest_example".
  */
