@@ -124,7 +124,7 @@ class SimpletestUnitTestExampleTestCase extends DrupalUnitTestCase {
 
     //Pass
     $result = simpletest_example_lowercase_string("lowercase");
-    $message = 'lowercase should return TRUE.'
+    $message = 'lowercase should return TRUE.';
     $this->assertTrue($result, $message);
 
     //Pass
