@@ -125,37 +125,11 @@ class SimpletestUnitTestExampleTestCase extends DrupalUnitTestCase {
    * behavior of a function when passed specific arguments.
    */
   public function testSimpletestUnitTestExampleFunction() {
-    $result = simpletest_example_empty_mysql_date(NULL);
-    // Note that test assertion messages should never be translated, so
-    // this string is not wrapped in t().
-    $message = 'A NULL value should return TRUE.';
+    $result = simpletest_example_uppercase_string("lowercase");
+    $message = 'UPPERCASE should return TRUE.';
     $this->assertTrue($result, $message);
-
-    $result = simpletest_example_empty_mysql_date('');
-    $message = 'An empty string should return TRUE.';
-    $this->assertTrue($result, $message);
-
-    $result = simpletest_example_empty_mysql_date('0000-00-00');
-    $message = 'An "empty" MySQL DATE should return TRUE.';
-    $this->assertTrue($result, $message);
-
-    $result = simpletest_example_empty_mysql_date(date('Y-m-d'));
-    $message = 'A valid date should return FALSE.';
-    $this->assertFalse($result, $message);
-
-    $result = simpletest_example_empty_mysql_date(date('Y-m-d'));
-    $message = 'A valid date should return FALSE.';
-    $this->assertFalse($result, $message);
-    
-    $result = simpletest_example_empty_mysql_date(date('Y-m-d'));
-    $message = 'A valid date should return FALSE.';
-    $this->assertFalse($result, $message);
 
     $result = simpletest_example_uppercase_string("UPPERCASE");
-    $message = 'UPPERCASE should return TRUE.';
-    $this->assertFalse($result, $message);
-
-    $result = simpletest_example_uppercase_string("lowercase");
     $message = 'lowercase should return FALSE.';
     $this->assertFalse($result, $message);
   }
