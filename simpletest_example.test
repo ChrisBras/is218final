@@ -79,35 +79,18 @@ class SimpletestExampleTestCase extends DrupalWebTestCase {
     }
   }
 
-  /**
-   * Detect if we're running on PIFR testbot; skip intentional failure in that
-   * case. It happens that on the testbot the site under test is in a directory
-   * named 'checkout' or 'site_under_test'.
-   *
-   * @return boolean
-   *   TRUE if running on testbot.
-   */
   public function runningOnTestbot() {
     return (file_exists("../checkout") || file_exists("../site_under_test"));
   }
 }
 
 
-/**
- * Although most core test cases are based on DrupalWebTestCase and are
- * functional tests (exercising the web UI) we also have DrupalUnitTestCase,
- * which executes much faster because a Drupal install does not have to be
- * one. No environment is provided to a test case based on DrupalUnitTestCase;
- * it must be entirely self-contained.
- *
- * @see DrupalUnitTestCase
- */
 class SimpletestUnitTestExampleTestCase extends DrupalUnitTestCase {
 
   public static function getInfo() {
     return array(
       'name' => 'Simpletest Example unit tests',
-      'description' => 'Test that simpletest_example_empty_mysql_date works properly.',
+      'description' => 'Test that simpletest_example_uppercase_string and simpletest_example_lowercase_string works properly.',
       'group' => 'Examples',
     );
   }
@@ -117,20 +100,46 @@ class SimpletestUnitTestExampleTestCase extends DrupalUnitTestCase {
     parent::setUp();
   }
 
-  /**
-   * Call simpletest_example_empty_mysql_date and check that it returns correct
-   * result.
-   *
-   * Note that no environment is provided; we're just testing the correct
-   * behavior of a function when passed specific arguments.
-   */
   public function testSimpletestUnitTestExampleFunction() {
-    $result = simpletest_example_uppercase_string("lowercase");
+  
+    //Pass
+    $result = simpletest_example_uppercase_string("UPPERCASE");
     $message = 'UPPERCASE should return TRUE.';
     $this->assertTrue($result, $message);
 
-    $result = simpletest_example_uppercase_string("UPPERCASE");
+    //Pass
+    $result = simpletest_example_uppercase_string("lowercase");
     $message = 'lowercase should return FALSE.';
+    $this->assertFalse($result, $message);
+
+    //Fail
+    $result = simpletest_example_uppercase_string("lowercase");
+    $message = 'lowercase should return FALSE.';
+    $this->assertTrue($result, $message);
+
+    //Fail
+    $result = simpletest_example_uppercase_string("UPPERCASE");
+    $message = 'UPPERCASE should return TRUE.';
+    $this->assertFalse($result, $message);
+
+    //Pass
+    $result = simpletest_example_lowercase_string("lowercase");
+    $message = 'lowercase should return TRUE.'
+    $this->assertTrue($result, $message);
+
+    //Pass
+    $result = simpletest_example_lowercase_string("UPPERCASE");
+    $message = 'UPPERCASE should return FALSE.';
+    $this->assertFalse($result, $message);
+
+    //Fail
+    $result = simpletest_example_lowercase_string("UPPERCASE");
+    $message = 'UPPERCASE should return FALSE.';
+    $this->assertTrue($result, $message);
+   
+    //Fail 
+    $result = simpletest_example_lowercase_string("lowercase");
+    $message = 'lowercase should return TRUE.';
     $this->assertFalse($result, $message);
   }
 }
